@@ -8,6 +8,7 @@ namespace WRLD_Programming_Test
 {
     class Node
     {
+        public string name;
         public Vector2 position;
         public Node parent;
         public Node child;
