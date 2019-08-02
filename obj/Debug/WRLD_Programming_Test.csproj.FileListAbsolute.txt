@@ -1,0 +1,7 @@
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\bin\Debug\WRLD_Programming_Test.exe.config
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\bin\Debug\WRLD_Programming_Test.exe
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\bin\Debug\WRLD_Programming_Test.pdb
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.csprojAssemblyReference.cache
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.csproj.CoreCompileInputs.cache
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.exe
+C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.pdb
