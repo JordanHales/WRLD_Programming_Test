@@ -25,6 +25,7 @@ namespace WRLD_Programming_Test
                 {
                     var nodeList = new List<Node>();
                     app.GetData(nodeList);
+                    Console.ReadKey();
                 }
 
                 // Otherwise exit the application
@@ -87,17 +88,23 @@ namespace WRLD_Programming_Test
                     tempNode.position.y = float.Parse(line);
 
                     // Adds node to the list and sets the data to be entered into a new node
-                    nodeList.Add(tempNode);
+                    nodeList.Add(new Node() { name = tempNode.name , position = new Vector2(tempNode.position.x, tempNode.position.y) });
                     i = 0;
                 }
 
                 i++;
             }
 
-            // Keep the console window open in debug mode.
-            Console.WriteLine(nodeList.Count);
-            Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
+            //nodeList = nodeList.OrderBy(x => x.position.x).ThenBy(x => x.position.y).ToList();
+
+            // ###DEBUG###
+            for (int t = 0; t < nodeList.Count; t++)
+            {
+                Console.WriteLine(nodeList[t].name + " " + nodeList[t].position.x + " " + nodeList[t].position.y);
+            }
+
+            // Displays the amount of nodes
+            Console.WriteLine("Data collected. There are a total of " + nodeList.Count + " points on the map.");
         }
     }
 }
