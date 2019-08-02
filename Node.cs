@@ -9,7 +9,7 @@ namespace WRLD_Programming_Test
     class Node
     {
         public string name;
-        public Vector2 position;
+        public Vector2 position = new Vector2();
         public Node parent;
         public Node child;
         
