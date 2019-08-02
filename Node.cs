@@ -12,9 +12,9 @@ namespace WRLD_Programming_Test
         public Node parent;
         public Node child;
         
-        public float CalculateDistance(Node point)
+        public float CalculateDistance(Node node)
         {
-            return (float)Math.Sqrt(Math.Pow(position.x - point.position.x, 2) + Math.Pow(position.y - point.position.y, 2));
+            return (float)Math.Sqrt(Math.Pow(position.x - node.position.x, 2) + Math.Pow(position.y - node.position.y, 2));
         }
     }
 }
