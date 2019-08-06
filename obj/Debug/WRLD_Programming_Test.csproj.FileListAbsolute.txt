@@ -5,10 +5,3 @@ C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD
 C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.csproj.CoreCompileInputs.cache
 C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.exe
 C:\Users\Jordan\Documents\Visual Studio 2017\Projects\WRLD_Programming_Test\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.pdb
-D:\GitHub\WRLD_Programming_Test\bin\Debug\WRLD_Programming_Test.exe.config
-D:\GitHub\WRLD_Programming_Test\bin\Debug\WRLD_Programming_Test.exe
-D:\GitHub\WRLD_Programming_Test\bin\Debug\WRLD_Programming_Test.pdb
-D:\GitHub\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.csproj.CoreCompileInputs.cache
-D:\GitHub\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.exe
-D:\GitHub\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.pdb
-D:\GitHub\WRLD_Programming_Test\obj\Debug\WRLD_Programming_Test.csprojAssemblyReference.cache
