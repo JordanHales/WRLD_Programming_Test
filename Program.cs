@@ -136,22 +136,10 @@ namespace WRLD_Programming_Test
             {
                 // Sets the closest node to be the max distance away
                 float closestCurrentDistance = 340282300000000000000000000000000000000f;
-
+                
                 // Compares the current node to all remaining nodes
                 for (int j = i + 1; j < nodeList.Count; j++)
                 {
-                    // Calculates what percentage of nodes have been compared
-                    currentComparison++;
-                    percentageTracker = (currentComparison / totalComparisons) * 100;
-                    percentageTracker = Math.Floor(percentageTracker);
-                    
-                    // If the percentage has gone up by a whole number, display this to the user
-                    if (Convert.ToInt32(percentageTracker) != percentageDisplay)
-                    {
-                        percentageDisplay = Convert.ToInt32(percentageTracker);
-                        Console.WriteLine("The current progress is " + percentageDisplay + "% complete.");
-                    }
-                    
                     float distance = nodeList[i].CalculateDistance(nodeList[j]);
 
                     // If the current calculated distance between selected nodes is closer than the closest distance
@@ -178,6 +166,18 @@ namespace WRLD_Programming_Test
                 {
                     closestTotalDistance = closestCurrentDistance;
                     mostIsolated = nodeList[i];
+                }
+
+                // Calculates what percentage of nodes have been compared
+                currentComparison += nodeList.Count - (i + 1);
+                percentageTracker = (currentComparison / totalComparisons) * 100;
+                percentageTracker = Math.Floor(percentageTracker);
+
+                // If the percentage has gone up by a whole number, display this to the user
+                if (Convert.ToInt32(percentageTracker) != percentageDisplay)
+                {
+                    percentageDisplay = Convert.ToInt32(percentageTracker);
+                    Console.WriteLine("The current progress is " + percentageDisplay + "% complete.");
                 }
             }
 
