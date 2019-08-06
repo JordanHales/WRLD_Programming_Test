@@ -25,6 +25,11 @@ namespace WRLD_Programming_Test
                 {
                     var nodeList = new List<Node>();
                     app.GetData(nodeList);
+
+                    Node mostIsolatedPoint = app.GetMostIsolated(nodeList);
+
+
+                    Console.WriteLine(mostIsolatedPoint.name);
                     Console.ReadKey();
                 }
 
@@ -95,8 +100,6 @@ namespace WRLD_Programming_Test
                 i++;
             }
 
-            //nodeList = nodeList.OrderBy(x => x.position.x).ThenBy(x => x.position.y).ToList();
-
             // ###DEBUG###
             for (int t = 0; t < nodeList.Count; t++)
             {
@@ -105,6 +108,44 @@ namespace WRLD_Programming_Test
 
             // Displays the amount of nodes
             Console.WriteLine("Data collected. There are a total of " + nodeList.Count + " points on the map.");
+        }
+
+        Node GetMostIsolated(List<Node> nodeList)
+        {
+            Console.WriteLine("1");
+            Node mostIsolated = new Node();
+            float closestTotalDistance = 340282300000000000000000000000000000000f;
+
+            // Loops through each node and calculates the closest node, skipping distances that have already been calculated
+            for (int i = 0; i < nodeList.Count; i++)
+            {
+                // Sets the closest node to be the max distance away
+                float closestCurrentDistance = 340282300000000000000000000000000000000f;
+
+                // Compares the current node to all the remaining nodes
+                for (int j = i + 1; j < nodeList.Count; j++)
+                {
+                    float distance = nodeList[i].CalculateDistance(nodeList[j]);
+
+                    // If the current distance is closer than the closest node, set this distance to be the closest
+                    if (distance < closestCurrentDistance)
+                    {
+                        closestCurrentDistance = distance;
+                    }
+                }
+
+                // If this node is the most isolated, record this node and update variables
+                if (closestCurrentDistance > closestTotalDistance)
+                {
+                    closestTotalDistance = closestCurrentDistance;
+                    mostIsolated = nodeList[i];
+                }
+            }
+
+            Console.WriteLine("2");
+            Console.WriteLine(mostIsolated.position.x);
+
+            return mostIsolated;
         }
     }
 }

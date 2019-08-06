@@ -10,8 +10,6 @@ namespace WRLD_Programming_Test
     {
         public string name;
         public Vector2 position = new Vector2(0,0);
-        public Node parent;
-        public Node child;
         
         public float CalculateDistance(Node node)
         {
