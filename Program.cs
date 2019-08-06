@@ -24,8 +24,9 @@ namespace WRLD_Programming_Test
                 if (app.CheckForFile())
                 {
                     var nodeList = new List<Node>();
-                    app.GetData(nodeList);
-
+                    nodeList = app.GetData();
+                    // Displays the amount of nodes
+                    Console.WriteLine("Data collected. There are a total of " + nodeList.Count + " points on the map.");
                     Node mostIsolatedPoint = app.GetMostIsolated(nodeList);
 
 
@@ -68,8 +69,9 @@ namespace WRLD_Programming_Test
             }
         }
 
-        void GetData(List<Node> nodeList)
+        List<Node> GetData()
         {
+            var nodeList = new List<Node>();
             var fileContent = File.ReadAllText(filepath);
             var array = fileContent.Split((string[])null, StringSplitOptions.RemoveEmptyEntries);
 
@@ -106,19 +108,27 @@ namespace WRLD_Programming_Test
                 Console.WriteLine(nodeList[t].name + " " + nodeList[t].position.x + " " + nodeList[t].position.y);
             }
 
-            // Displays the amount of nodes
-            Console.WriteLine("Data collected. There are a total of " + nodeList.Count + " points on the map.");
+            return nodeList;
         }
 
         Node GetMostIsolated(List<Node> nodeList)
         {
             Console.WriteLine("1");
             Node mostIsolated = new Node();
-            float closestTotalDistance = 340282300000000000000000000000000000000f;
+            float closestTotalDistance = 0;
+            bool lastNodeMostIsolated = true;
+
+            float percentageOneNode = 100 / nodeList.Count;
+            float percentageTrackerFull = 0.0f;
+            float percentageTrackerShort = 0.0f;
 
             // Loops through each node and calculates the closest node, skipping distances that have already been calculated
-            for (int i = 0; i < nodeList.Count; i++)
+            for (int i = 0; i < nodeList.Count - 1; i++)
             {
+                
+
+
+
                 // Sets the closest node to be the max distance away
                 float closestCurrentDistance = 340282300000000000000000000000000000000f;
 
@@ -126,20 +136,36 @@ namespace WRLD_Programming_Test
                 for (int j = i + 1; j < nodeList.Count; j++)
                 {
                     float distance = nodeList[i].CalculateDistance(nodeList[j]);
+                    
 
+                   //Console.WriteLine(distance);
                     // If the current distance is closer than the closest node, set this distance to be the closest
                     if (distance < closestCurrentDistance)
                     {
                         closestCurrentDistance = distance;
+
+                        if (lastNodeMostIsolated)
+                        {
+                            if (j != i + 1 || j != nodeList.Count)
+                            {
+                                lastNodeMostIsolated = false;
+                            }
+                        }
                     }
                 }
-
+                
+                //Console.WriteLine(closestCurrentDistance);
                 // If this node is the most isolated, record this node and update variables
                 if (closestCurrentDistance > closestTotalDistance)
                 {
                     closestTotalDistance = closestCurrentDistance;
                     mostIsolated = nodeList[i];
                 }
+            }
+
+            if (lastNodeMostIsolated)
+            {
+                mostIsolated = nodeList[nodeList.Count - 1];
             }
 
             Console.WriteLine("2");
