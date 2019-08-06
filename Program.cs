@@ -108,6 +108,8 @@ namespace WRLD_Programming_Test
             //    Console.WriteLine(nodeList[t].name + " " + nodeList[t].position.x + " " + nodeList[t].position.y);
             //}
 
+            nodeList.OrderBy(a => a.position.x).ThenBy(a => a.position.y).ToList();
+
             return nodeList;
         }
 
@@ -116,8 +118,7 @@ namespace WRLD_Programming_Test
             // Variables for calculations
             Console.WriteLine("1");
             Node mostIsolated = new Node();
-            float closestTotalDistance = 0.0f;
-            bool lastNodeMostIsolated = true;
+            float distance = 340282300000000000000000000000000000000.0f;
 
             // Variables for tracking the percentage of calculations complete
             double currentComparison = 0.0d;
@@ -130,43 +131,37 @@ namespace WRLD_Programming_Test
             {
                 totalComparisons += i;
             }
+            
+            Console.Write(totalComparisons);
 
             // Loops through each node and calculates the closest node, skipping distances that have already been calculated
             for (int i = 0; i < nodeList.Count - 1; i++)
             {
-                // Sets the closest node to be the max distance away
-                float closestCurrentDistance = 340282300000000000000000000000000000000f;
-                
                 // Compares the current node to all remaining nodes
                 for (int j = i + 1; j < nodeList.Count; j++)
                 {
-                    float distance = nodeList[i].CalculateDistance(nodeList[j]);
+                    distance = nodeList[i].CalculateDistance(nodeList[j]);
 
                     // If the current calculated distance between selected nodes is closer than the closest distance
                     // for the first node and another node, set the distance between the two current nodes
                     // to be the closest distance
-                    if (distance < closestCurrentDistance)
+                    if (distance < nodeList[i].closestNodeDistance)
                     {
-                        closestCurrentDistance = distance;
-
-                        // If the node is not comparing against the first or last node in the list
-                        // then the last node in the list will not be the most isolated
-                        if (lastNodeMostIsolated)
-                        {
-                            if (j != i + 1 || j != nodeList.Count)
-                            {
-                                lastNodeMostIsolated = false;
-                            }
-                        }
+                        nodeList[i].closestNodeDistance = distance;
+                    }
+                    if (distance < nodeList[j].closestNodeDistance)
+                    {
+                        nodeList[j].closestNodeDistance = distance;
                     }
                 }
                 
-                // If this node is the most isolated, record this node and update variables
-                if (closestCurrentDistance > closestTotalDistance)
-                {
-                    closestTotalDistance = closestCurrentDistance;
-                    mostIsolated = nodeList[i];
-                }
+                //// If this node is the most isolated, record this node and update variables
+                //if (closestCurrentDistance > closestTotalDistance)
+                //{
+                //    closestTotalDistance = closestCurrentDistance;
+                //    mostIsolated = nodeList[i];
+                //    Console.WriteLine("New update " + i + "cd: " + closestTotalDistance);
+                //}
 
                 // Calculates what percentage of nodes have been compared
                 currentComparison += nodeList.Count - (i + 1);
@@ -181,16 +176,27 @@ namespace WRLD_Programming_Test
                 }
             }
 
-            // If the last comparison was always the furthest distance, this means the last node in the list was the most isolated
-            if (lastNodeMostIsolated)
+            double furthestDistance = 0.0d;
+            for (int i = 0; i < nodeList.Count; i++)
             {
-                mostIsolated = nodeList[nodeList.Count - 1];
+                if (nodeList[i].closestNodeDistance > furthestDistance)
+                {
+                    furthestDistance = nodeList[i].closestNodeDistance;
+                    mostIsolated = nodeList[i];
+                }
             }
+            
+            // If the last comparison was always the furthest distance, this means the last node in the list was the most isolated
+            //if (lastNodeMostIsolated)
+            //{
+            //    mostIsolated = nodeList[nodeList.Count - 1];
+            //}
 
             Console.WriteLine("2");
             Console.WriteLine(mostIsolated.position.x);
 
             return mostIsolated;
         }
+
     }
 }
